@@ -1,0 +1,11 @@
+{
+  "name": "thoughts-theme",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write '**/*.css'",
+    "lint": "prettier --check '**/*.css'"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}
