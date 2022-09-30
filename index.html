@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>John Karahalis | thoughts</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💭</text></svg>">
+	</head>
+	<body>
+		<h1>thoughts</h1>
+		<p>Thoughts by John Karahalis, hosted on  <a href="https://thoughts.page">thoughts.page</a>, a "quieter, slower, more personal" alternative to social media.<p>
+
+		{% for thought in thoughts %}
+		<div class='thought' id="{{ thought.time | date(format='%s', timezone=thought.timezone) }}">
+			<h3><a href="#{{ thought.time | date(format='%s', timezone=thought.timezone) }}">{{ thought.time | date(format='%b %d, %Y - %-I:%M%p', timezone=thought.timezone) }}</a></h3>
+			<p>{{ thought.rendered_text }}</p>
+		</div>
+		{% endfor %}
+
+		<hr>
+		<p style="text-align:center">
+		hosted on <a href="https://thoughts.page">thoughts.page</a>. theme by <a href=https://evy.garden/thoughts>evy</a>. {% if webring %}check out the <a href="https://thoughts.page/webring">thoughts webring</a>!{% endif %}
+		</p>
+	</body>
+</html>
