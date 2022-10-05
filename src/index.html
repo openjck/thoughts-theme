@@ -12,37 +12,45 @@
     />
   </head>
   <body>
-    <h1><a href="https://thoughts.page/">thoughts</a></h1>
-
-    <p>
-      Thoughts from <a href="https://www.johnkarahalis.com/">John Karahalis</a>.
-      Powered by <a href="https://thoughts.page">thoughts.page</a>, a "quieter,
-      slower, more personal" alternative to social media.
-    </p>
-
-    {% for thought in thoughts %}
-      <div
-        class="thought"
-        id="{{ thought.time | date(format='%s', timezone=thought.timezone) }}"
-      >
-        <h3>
-          <a
-            href="#{{ thought.time | date(format='%s', timezone=thought.timezone) }}"
-            >{{ thought.time | date(format='%b %d, %Y - %-I:%M%p',
-            timezone=thought.timezone) }}</a
-          >
-        </h3>
-        <p>{{ thought.rendered_text }}</p>
-      </div>
-    {% endfor %}
+    <header>
+      <h1><a href="https://thoughts.page/">thoughts</a></h1>
+      <p>
+        Thoughts from <a href="https://www.johnkarahalis.com/">John Karahalis</a>.
+        Powered by <a href="https://thoughts.page">thoughts</a>, a "quieter,
+        slower, more personal" alternative to social media.
+      </p>
+    </header>
 
     <hr />
 
-    <p style="text-align: center">
-      hosted on <a href="https://thoughts.page">thoughts.page</a>. theme by
-      <a href="https://evy.garden/thoughts">evy</a>. {% if webring %}check out
-      the <a href="https://thoughts.page/webring">thoughts webring</a>!{% endif
-      %}
-    </p>
+    <main>
+      {% for thought in thoughts %}
+        <div
+          class="thought"
+          id="{{ thought.time | date(format='%s', timezone=thought.timezone) }}"
+        >
+          <h3>
+            <a href="#{{ thought.time | date(format='%s', timezone=thought.timezone) }}">
+              {{ thought.time | date(format='%b %d, %Y - %-I:%M%p', timezone=thought.timezone) }}
+            </a>
+          </h3>
+          {{ thought.rendered_text }}
+        </div>
+      {% endfor %}
+    </main>
+
+    <hr />
+
+    <footer>
+      <p>
+        hosted on <a href="https://thoughts.page">thoughts.page</a>. theme by
+        <a href="https://evy.garden/thoughts">evy</a>.
+
+        {% if webring %}
+          check out the
+          <a href="https://thoughts.page/webring">thoughts webring</a>!
+        {% endif %}
+      </p>
+    </footer>
   </body>
 </html>
