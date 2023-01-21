@@ -70,6 +70,21 @@ p:last-child {
   margin-bottom: 0;
 }
 
+/**
+ * The Markdown compiler that thoughts uses deviates from standard Markdown
+ * compilers in that it treats single line breaks as paragraph breaks. As a
+ * result, paragraphs are added within all list items. The following CSS rule
+ * removes the excess margin between list items that results.
+ *
+ * I mentioned this to Wesley on 2023-01-21, so it's possible that he may fix
+ * this, as he did when I mentioned a similar issue related to blockquotes. If
+ * he does apply a fix, it will only apply to future posts unless I ask him to
+ * also apply the fix to some of my past posts.
+ */
+li > p {
+  margin: 0;
+}
+
 footer p {
   font-size: 16px;
   margin: 10px 0;
