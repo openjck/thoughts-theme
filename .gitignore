@@ -1,2 +1,5 @@
+.env
+
 # Ignore generated files.
 node_modules/
+dist/

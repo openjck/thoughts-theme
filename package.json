@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "format": "prettier --write '**/*.css'",
-    "lint": "prettier --check '**/*.css'"
+    "lint": "prettier --check '**/*.css'",
+    "build": "scripts/build"
   },
   "devDependencies": {
     "prettier": "^2.8.1"

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# https://stackoverflow.com/a/246128/715866
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
+
+cd "$SCRIPT_DIR/.." || exit 1
+
+mkdir --parents dist
+
+source .env
+
+# Copy _style.css_ to _dist_ without making any changes.
+cp src/style.css dist
+
+# Read _src/index.html_, replace `{{ GA_TRACKING_ID }}` with the value from the
+# _.env_ file, and save the result to _dist/index.html_.
+sed "s/{{ GA_TRACKING_ID }}/$GA_TRACKING_ID/g" "$SCRIPT_DIR/../src/index.html" \
+  > "$SCRIPT_DIR/../dist/index.html"
