@@ -20,7 +20,27 @@
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💭</text></svg>"
     />
     <script src="https://unpkg.com/smartquotes@2.3.2/dist/smartquotes.js"></script>
-    <script>smartquotes()</script>
+    <script>
+      smartquotes();
+
+      const codepoints = {
+          enDash: '\u2013',
+          emDash: '\u2014',
+          ellipsis: '\u2026',
+      };
+
+      // Convert some other sets of characters to typographic features.
+      //
+      // The replacement for em dashes must be configured before the replacement
+      // for en dashes, or "---" would be converted to an en dash followed by a
+      // hyphen.
+      //
+      // Inspired by:
+      // https://github.com/kellym/smartquotes.js/issues/4#issuecomment-1119672932
+      smartquotes.replacements.push([/---/g, codepoints.emDash]);
+      smartquotes.replacements.push([/--/g, codepoints.enDash]);
+      smartquotes.replacements.push([/\.\.\./g, codepoints.ellipsis]);
+    </script>
   </head>
   <body>
     <header>
